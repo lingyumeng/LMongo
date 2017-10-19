@@ -98,7 +98,7 @@ def ensure_float(v):
         return float(v)
 
 def ensure_int(v):
-    if is_numnber(v):
+    if is_number(v):
         return int(v)
 
 def ensure_year_array(val):
