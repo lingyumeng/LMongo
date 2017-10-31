@@ -36,7 +36,15 @@ def audit(osmfile):
 
 def update_name(name, mapping):
     # Your
+    m = street_type_re.search(name)
+    if m :
+        err_type = m.group()
+        ok_type = err_type
 
+        if err_type in mapping.keys():
+            ok_type = mapping[err_type]
+
+        name = name.replace(err_type, ok_type)
 
     return name
 
@@ -50,7 +58,7 @@ def test():
             better_name = update_name(name, mapping)
             print("{0} => {1}".format(name, better_name))
             if name == "West Lexington St.":
-                assert better_name == "West Lexingtong Street"
+                assert better_name == "West Lexington Street"
             if name == "Baldwin Rd.":
                 assert better_name == "Baldwin Road"
 
